@@ -1,121 +1,71 @@
-import json 
 import os
-
+import json
 import datetime
-file = 'tryyourbest.json'
-zum=[]
-verify=os.path.exists(file)
 
-if verify==False:
-     with open(file,'w') as sleep:
-           json.dump(zum,sleep,indent=4)
+file='zap.json'
+Progress=['Done','In Process','Started']
+
+def makefile():
+    file='zap.json'
+    path= "C:/Users/sksrd/Desktop/Programming/zap.json"
+    
+    isexist=os.path.exists(path)
+    print(isexist)
+    if isexist ==True:
+        pass
+    else:
+
+        Initailize=[]
+        with open (file,'w') as p:
+            json.dump(Initailize,p)
+            
+   
+
+def Hellouser():
+    print('Hello and welcome to Will')
+    Choice=input("You can press 1 to add a new goal. \nPress 2 to change Progress of the goals.\nPress 3 to view or remove the goals.")
+
+
+
+def update():
+    with open (file,'r') as sam:
+        seca=json.load(sam)
+        for index,i in enumerate(seca,start=0):
+            print(f"{index}: {i}")
+
+        zig=int(input("Provide the task number that needs to be updated."))
+        sub=seca[zig]
+        hello=sub.pop('Progress')
+        sub['Progress']='Done'
+    with open(file,'w') as lolita:
+        json.dump(seca,lolita,indent=4)
+        
+        
+
+
+
+
+def addagoal():
+    goal=input("What goal do you have?")
+    jsonn={"Goal":goal,
+           'Progress':Progress[2],
            
-Progress=['Started','Done']
-
-class TodoCLI():
-     
-     
-     def delete():
-                   
-                    with open(file,'r') as kkr:
-                                    pelo=(json.load(kkr))
-                                    print(pelo)
-                                    choice=int(input("Please Input the ID number you want to remove."))
-                                    pelo=[task for task in pelo if task['id'] != choice]
-                                    with open(file, 'w') as f:
-                                              json.dump(pelo, f, indent=4)
-                                            
-                                            
-
-                                 
-                        
-     def update():
-             with open (file,'r') as helloi:
-                     he=json.load(helloi)
-                     print(he)
-                     updation=(int(input('Which task will you like to remove please provide the id.')))
-                    
-                     
-
-                               
-                       
-
-                     
-                                     
-                                     
-                                     
-                         
-                                  
-                                     
-                          
-
-                                                                       
-
-            
-
-     def startapp(): 
-            print('****Todo CLI****')
-            choice=input('1.Add a goal. \n 2.View goal. \n 3.Delete a task. \n 4.Update as done.')
-            if choice =='1':
-                TodoCLI.Writeanewgoal()
-            elif choice =='2':
-                 TodoCLI.read()
-            elif choice == '3':
-                 TodoCLI.delete()
-
-            elif  choice =='4':
-                    TodoCLI.update()
-            else:
-                 print('Please make a valid choice') 
-
-                 
-                   
+           }
     
-          
-                                            
-     def Writeanewgoal():
-                     
-          
-                        with open(file,'r') as z:
-                               zack=json.load(z)
-                               if verify==False: 
-                                      lasttask=zack[-1]
-                                      i=lasttask['id']+1
-                               else:
-                                     i=1        
-                               
-                               
-                        Goal=input("What is your Goal?")
-                        Goals={
-                         'id' : 1+i,
-                         'Goal': Goal,
-                         'Progress':Progress[0],
-
-                        }
-                        zack.append(Goals)
-                        print(zack)
-                        with open (file,'w') as pum:
-                               lum=json.dump(zack,pum,indent=4)
-                               
-
-     def read():
-               with open(file, 'r') as hell:
-                    
-                    lack = json.load(hell)
-                    for tasks in lack:
-                            print(tasks['id'])
-                            print(tasks['Goal'])
-                            print(tasks['Progress'])                          
-                    
-                    
-                  
-               
-                                                         
-TodoCLI.startapp()
-             
-            
-
+    with open(file,'r') as pop:
+        swag=json.load(pop)
+        swag.append(jsonn)
+        print(swag)
     
+    with open (file,'w') as peep:
+        json.dump(swag,peep,indent=4)
+
+makefile()  
+addagoal()      
+
+
+
+
 
 
 
