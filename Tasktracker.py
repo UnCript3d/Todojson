@@ -20,6 +20,20 @@ def makefile():
             json.dump(Initailize,p)
             
    
+def delete():
+     with open (file,'r') as ram:
+        ceca=json.load(ram)
+        for index,n in enumerate(ceca,start=0):
+            print(f"{index}: {n}")
+        pig=int(input("Provide the task number that needs to be updated."))
+        lub=ceca[pig]
+        he=ceca.pop(pig)
+        print(ceca)
+     with open (file,'w') as lakshman:
+         json.dump(ceca,lakshman,indent=4)
+         
+            
+
 
 def Hellouser():
     print('Hello and welcome to Will')
@@ -60,8 +74,7 @@ def addagoal():
     with open (file,'w') as peep:
         json.dump(swag,peep,indent=4)
 
-makefile()  
-addagoal()      
+delete()    
 
 
 
